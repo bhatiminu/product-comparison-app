@@ -4,10 +4,14 @@ import CompareBar from "./components/CompareBar";
 import CompareView from "./components/CompareView";
 import { FaSun, FaMoon } from "react-icons/fa";
 import './index.css'
+import { useEffect } from "react";
 
 
 function App() {
-  const [compareList, setCompareList] = useState([]);
+ const [compareList, setCompareList] = useState(() => {
+  const saved = localStorage.getItem("compareList");
+  return saved ? JSON.parse(saved) : [];
+});
   const [showCompareView, setShowCompareView] =useState(false);
  const [isDarkMode, setIsDarkMode] = useState(() => {
   const savedTheme = localStorage.getItem("theme");
@@ -22,7 +26,9 @@ const toggleTheme = () => {
     return newMode;
   });
 };
-
+useEffect(() => {
+  localStorage.setItem("compareList", JSON.stringify(compareList));
+}, [compareList]);
   const handleCompare = ()=> {
     setShowCompareView(true);
   };

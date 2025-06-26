@@ -113,6 +113,65 @@
   box-shadow: 0 0 0 3px rgba(56, 189, 251, 0.4);
   background-color: #f0faff;
 }
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.modal-alert {
+  background-color: #fff;
+  padding: 24px;
+  width: 90%;
+  max-width: 360px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.modal-alert p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-alert p svg {
+  margin-right: 4px;
+}
+
+.modal-alert .ok-btn {
+  background-color: #38bdfb;
+  border: none;
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.modal-alert .ok-btn:hover {
+  background-color: #0ea5e9;
+}
+
+.modal-alert .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: #777;
+  cursor: pointer;
+}
 .App.dark .product-card{
   background-color: #f0f0f0;
 }
