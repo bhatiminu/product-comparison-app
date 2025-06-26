@@ -2,18 +2,38 @@ import React, { useState } from "react";
 import ProductList from "./components/ProductList";
 import CompareBar from "./components/CompareBar";
 import CompareView from "./components/CompareView";
+import { FaSun, FaMoon } from "react-icons/fa";
+import './index.css'
 
 
 function App() {
   const [compareList, setCompareList] = useState([]);
   const [showCompareView, setShowCompareView] =useState(false);
+ const [isDarkMode, setIsDarkMode] = useState(() => {
+  const savedTheme = localStorage.getItem("theme");
+  return savedTheme === "dark" ? true : false;
+ });
+ 
+
+const toggleTheme = () => {
+  setIsDarkMode((prev) => {
+     const newMode = !prev;
+    localStorage.setItem("theme", newMode ? "dark" : "light");
+    return newMode;
+  });
+};
 
   const handleCompare = ()=> {
     setShowCompareView(true);
   };
 return (
-    <div className="App">
-      <h1>Product Comparison App</h1>
+    <div className={`App ${isDarkMode ? "dark" : "light"}`}>
+      <div className="header-bar">
+      <h1 className="app-title">Product Comparison App</h1>
+      <button onClick={toggleTheme} className="theme-toggle">
+      {isDarkMode ? <><FaMoon /> Dark Mode</> : <><FaSun /> Light Mode</>}
+      </button>
+      </div>
       {showCompareView ? (
         <CompareView
           compareList={compareList}
